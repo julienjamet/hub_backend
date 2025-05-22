@@ -2,7 +2,7 @@
     "name": "hub_backend",
     "author": "Julien Jamet",
     "private": true,
-    "version": "0.2.0",
+    "version": "0.3.0",
     "type": "module",
     "scripts": {
         "dev": "concurrently -n 'TS,JS' -c 'blue,yellow' -p [{name}] 'tsc --watch' 'nodemon --quiet ./dist/index.js'",
@@ -15,7 +15,8 @@
         "dotenv": "^16.5.0",
         "express": "^4.21.1",
         "helmet": "^8.1.0",
-        "jiti": "^2.4.2"
+        "jiti": "^2.4.2",
+        "mongoose": "^8.14.3"
     },
     "devDependencies": {
         "@types/cors": "^2.8.18",

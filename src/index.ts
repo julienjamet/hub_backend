@@ -12,6 +12,10 @@ import { ansi } from './enums/enums.js';
 /****************************************[ METHODS ]*/
 import { setCorsAllowedOrigin, setHelmetConfig } from './methods/methods.js';
 /****************************************************/
+
+/************************************[ MAIN ROUTER ]*/
+import MainRouter from './routes/router.js';
+/****************************************************/
 /************************************************************************/
 
 
@@ -43,5 +47,10 @@ app.use(helmet(helmetOptions));
 const port: number = Number(process.env.PORT);
 
 app.listen(port, '0.0.0.0', (): void => console.log(`${ansi.green}Server launched on port [ ${ansi.yellow}${port}${ansi.green} ]`));
+/****************************************************/
+
+
+/************************************[ MAIN ROUTER ]*/
+MainRouter(app);
 /****************************************************/
 /************************************************************************/
