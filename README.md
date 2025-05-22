@@ -14,6 +14,30 @@ npm i
 
 ---
 
+### 🌍 Environment configuration
+
+The app uses [dotenv](https://www.npmjs.com/package/dotenv) to load environment variables ( see [.env.example](./.env.example) ).
+
+---
+
+### 🔐 Security
+
+This project includes basic security middlewares, configured dynamically via the `NODE_ENV` environment variable :
+
+- [CORS](https://developer.mozilla.org/fr/docs/Web/HTTP/Guides/CORS)
+
+    - `development` → allows all origins ( `*` )
+
+    - `preproduction` / `production` → allows only origins defined in the `.env` file
+
+- [Helmet](https://helmetjs.github.io)
+
+    - `development` → disabled
+
+    - `preproduction` / `production` → activated in strict mode ( see [configuration](./src/methods/methods.ts) )
+
+---
+
 ### 📦 Scripts
 
 | Script          | Description                                       |
