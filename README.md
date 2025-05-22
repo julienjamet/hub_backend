@@ -85,6 +85,32 @@ Starts the production build locally by serving the files from the `dist/` folder
 
 ---
 
+### 🐳 Docker
+
+The project supports [Docker](https://www.docker.com) builds for production deployment.
+
+#### 🏗️ Build the Docker image
+
+```bash
+docker build -t your-image-name .
+```
+
+Builds the app with `Node`.
+
+#### 🚀 Serve with Docker
+
+```bash
+docker run -p 80:80 your-image-name
+```
+
+#### 🏷️ Docker Hub
+
+You can find all versions of my `Docker` image on [Docker Hub](https://hub.docker.com/r/julienjamet1992/hub_backend).
+
+![Docker Image Version](https://img.shields.io/docker/v/julienjamet1992/hub_backend?sort=semver)
+
+---
+
 ### 🔵 TypeScript
 
 `TypeScript` is configured in strict mode, targeting modern ECMAScript.
@@ -100,5 +126,7 @@ The [`release.sh`](./release.sh) script automates :
 - Linting
 
 - Building
+
+- Creating and pushing ( optional ) a `Docker` image
 
 - Tagging the release commit
