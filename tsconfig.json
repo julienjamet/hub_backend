@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        // -- to enable modern JavaScript output
+        "target": "ES2022",
+        // -- to include ES2022 built-ins
+        "lib": [
+            "ES2022"
+        ],
+        // -- to use ECMAScript module syntax ( import / export )
+        "module": "NodeNext",
+        // -- to enable all strict type-checking options
+        "strict": true,
+        // -- to check types in node_modules
+        "skipLibCheck": false,
+        // -- to forbid compilation if any TypeScript error is found
+        "noEmitOnError": true,
+        // -- destination of compiled JS files
+        "outDir": "./dist",
+        // -- to use path aliases
+        "paths": {
+            "@/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
