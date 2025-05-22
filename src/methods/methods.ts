@@ -1,6 +1,15 @@
 /************************************************************[ IMPORTS ]*/
 /************************************[ NPM MODULES ]*/
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+/****************************************************/
+
+/******************************************[ ENUMS ]*/
+import { ansi } from '../enums/enums.js';
+/****************************************************/
+
+/*************************************[ INTERFACES ]*/
+import { DbConnectParams } from '@/interfaces/interfaces.js';
 /****************************************************/
 /************************************************************************/
 
@@ -63,6 +72,25 @@ export const setHelmetConfig: () => object = () => {
         case 'development':
             return {};
     }
+};
+/****************************************************/
+
+
+/****************************[ CONNECT TO DATABASE ]*/
+type connectToDatabase = (params: DbConnectParams) => mongoose.Connection;
+
+export const connectToDatabase: connectToDatabase = (params) => {
+    const connection: mongoose.Connection = mongoose.createConnection(params.connectionString);
+
+    connection.on('connected', (): void => {
+        console.log(`${ansi.green}Connected to [ ${ansi.yellow}${params.dbName}${ansi.green} ] database`);
+    });
+
+    connection.on('error', (): void => {
+        console.error(`${ansi.red}Connection to [ ${ansi.yellow}${params.dbName}${ansi.red} ] database has failed`);
+    });
+
+    return connection;
 };
 /****************************************************/
 /************************************************************************/

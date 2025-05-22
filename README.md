@@ -4,6 +4,8 @@ This is a [Node](https://nodejs.org) application built with [Express](https://ex
 
 It uses strict linting rules to ensure a fast, modern, and maintainable development experience.
 
+It connects to a [MongoDB](https://www.mongodb.com) database using [Mongoose](https://www.npmjs.com/package/mongoose), with modular connections for scalable domain-based data access.
+
 ---
 
 ### 🛠️ Install dependencies
@@ -37,6 +39,14 @@ This project includes basic security middlewares, configured dynamically via the
     - `development` → disabled
 
     - `preproduction` / `production` → activated in strict mode ( see [configuration](./src/methods/methods.ts) )
+
+---
+
+### 🛢️ Database ( MongoDB + Mongoose )
+
+The app connects to a `MongoDB` database using `Mongoose`'s `createConnection` method.
+
+The connection is abstracted through the [connectToDatabase](./src/methods/methods.ts) method and configured via environment variables, allowing the project to support multiple database connections.
 
 ---
 
