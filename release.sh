@@ -72,7 +72,74 @@ echo -e "✅ ${GREEN}Build completed successfully, move to next step..."
 
 
 ############################################################### [ STEP 5 ]
-print_step "📦 Step 5 : Choose version bump type"
+print_step "🐳 Step 5 : Building Docker image..."
+
+read -p "👉 Please enter an image name : " input_image_name
+
+if [ -z "$input_image_name" ]; then
+  echo -e "❌ ${RED}Empty image name entered. Aborting."
+  exit 1
+fi
+
+echo ""
+docker build --no-cache -t "$input_image_name" . || {
+  echo -e "❌ ${RED}Docker build failed. Aborting."
+  exit 1
+}
+
+echo ""
+echo -e "✅ ${GREEN}Docker image '$input_image_name' built successfully, move to next step..."
+##########################################################################
+
+
+############################################################# [ STEP 5.5 ]
+print_step "📤 Step 5.5 ( optional ) : Pushing Docker image..."
+
+read -p "👉 Do you want to push the image to Docker Hub ? ( yes / no ) : " push_answer
+
+case "$push_answer" in
+  yes)
+    echo ""
+    read -p "🔐 Please enter your Docker username : " docker_username
+    echo ""
+
+    docker login || {
+      echo -e "❌ ${RED}Docker login failed. Aborting."
+      exit 1
+    }
+
+    echo ""
+    read -p "👉 Please enter an image tag ( optional ) : " input_image_tag
+    echo ""
+
+    if [ -z "$input_image_tag" ]; then
+      input_image_tag="latest"
+    fi
+
+    docker tag "$input_image_name" "$docker_username/$input_image_name:$input_image_tag"
+
+    docker push "$docker_username/$input_image_name:$input_image_tag" || {
+      echo -e "❌ ${RED}Failed to push image to Docker Hub. Aborting."
+      exit 1
+    }
+
+    echo ""
+    echo -e "✅ ${GREEN}Docker image successfully pushed as '$docker_username/$input_image_name:$input_image_tag', move to next step..."
+    ;;
+  no)
+    echo ""
+    echo -e "${GREEN}Push skipped, move to next step..."
+    ;;
+  *)
+    echo -e "❌ ${RED}Invalid input. Please answer 'yes' or 'no'. Aborting."
+    exit 1
+    ;;
+esac
+##########################################################################
+
+
+############################################################### [ STEP 6 ]
+print_step "📦 Step 6 : Choose version bump type"
 
 echo -e "   ${GREEN}[p] patch ( bug fixes )${NC}"
 echo -e "   ${YELLOW}[m] minor ( backward-compatible features )${NC}"
@@ -99,8 +166,8 @@ echo -e "✅ ${GREEN}Version bumped successfully, move to next step..."
 ##########################################################################
 
 
-############################################################### [ STEP 6 ]
-print_step "🛑 Step 6 : Manually stage the files you want to commit"
+############################################################### [ STEP 7 ]
+print_step "🛑 Step 7 : Manually stage the files you want to commit"
 
 echo "👉 Use "git add ..." for precise control"
 echo ""
@@ -114,8 +181,8 @@ fi
 ##########################################################################
 
 
-############################################################### [ STEP 7 ]
-print_step "💬 Step 7 : Write your commit message"
+############################################################### [ STEP 8 ]
+print_step "💬 Step 8 : Write your commit message"
 
 read -p "Commit message: " message
 echo ""
