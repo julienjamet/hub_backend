@@ -150,3 +150,5 @@ The following routes are available :
 - `Hub`
 
   - `GET` [/page_presentation/:location](./src/routes/hub/get_routes/get_routes.ts) : returns the page presentation corresponding to the provided location
+
+  - `GET` [/projects/:category](./src/routes/hub/get_routes/get_routes.ts) : returns all projects matching the provided category

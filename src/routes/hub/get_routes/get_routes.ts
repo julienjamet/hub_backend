@@ -4,11 +4,12 @@ import { Application, Request, Response } from 'express';
 /****************************************************/
 
 /*************************************[ INTERFACES ]*/
-import { HubPagePresentation } from '../../../interfaces/hub/hub.js';
+import { HubPagePresentation, HubProject } from '../../../interfaces/hub/hub.js';
 /****************************************************/
 
 /********************************[ MONGOOSE MODELS ]*/
 import { hubPagePresentations } from '../../../mongoose/models/hub/page_presentation.js';
+import { HubProjects } from '../../../mongoose/models/hub/projects.js';
 /****************************************************/
 /************************************************************************/
 
@@ -29,6 +30,18 @@ export default (app: Application): void => {
                     res.status(404).send('Page presentation not found');
                 }
             })
+
+            .catch((error: Error): Response => res.status(500).send(error));
+    });
+
+
+    // GET ALL PROJECTS ( c-[R]-u-d )
+    app.get('/projects/:category', (req: Request, res: Response): void => {
+        const category: string = req.params.category;
+
+        HubProjects.find({ category }).sort({ number: 1 })
+
+            .then((projects: HubProject[]): Response => res.status(200).send(projects))
 
             .catch((error: Error): Response => res.status(500).send(error));
     });
