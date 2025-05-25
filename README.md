@@ -142,3 +142,13 @@ The [`release.sh`](./release.sh) script automates :
 - Creating and pushing ( optional ) a `Docker` image
 
 - Tagging the release commit
+
+---
+
+### 🧭 Routing
+
+The following routes are available :
+
+- `Hub`
+
+  - `GET` [/page_header/:location](./src/routes/hub/get_routes/get_routes.ts) : returns the page header matching the provided location
