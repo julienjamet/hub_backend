@@ -154,3 +154,19 @@ The following routes are available :
   - `GET` [/page_header/:location](./src/routes/hub/get_routes/get_routes.ts) : returns the page header matching the provided location
 
   - `GET` [/projects/:category](./src/routes/hub/get_routes/get_routes.ts) : returns all projects matching the provided category
+
+- `Pokedex`
+
+  - `POST` [/trainers/signup](./src/routes/pokemon/post_routes/post_routes.ts) : creates a trainer account
+
+  - `POST` [/trainers/login](./src/routes/pokemon/post_routes/post_routes.ts) : logs in
+
+  - `POST` [/pokemon](./src/routes/pokemon/post_routes/post_routes.ts) : catches a Pokemon
+
+  - `GET` [/pokemon](./src/routes/pokemon/get_routes/get_routes.ts) : returns all Pokemon
+
+  - `GET` [/pokemon/:id](./src/routes/pokemon/get_routes/get_routes.ts) : returns one Pokemon
+
+  - `PUT` [/pokemon/:id](./src/routes/pokemon/put_routes/put_routes.ts) : makes a Pokemon evolve
+
+  - `DELETE` [/pokemon/:id](./src/routes/pokemon/delete_routes/delete_routes.ts) : deletes a Pokemon

@@ -1,6 +1,7 @@
 /************************************************************[ IMPORTS ]*/
 /************************************[ NPM MODULES ]*/
 import express, { Application } from 'express';
+import cookieParser from 'cookie-parser';
 import cors, { CorsOptions } from 'cors';
 import helmet from 'helmet';
 /****************************************************/
@@ -23,6 +24,7 @@ import MainRouter from './routes/router.js';
 const app: Application = express();
 
 /*******************[ JSON PARSER & SECURITY RULES ]*/
+app.use(cookieParser());
 app.use(express.json());
 
 // -- cors config
