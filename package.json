@@ -2,7 +2,7 @@
     "name": "hub_backend",
     "author": "Julien Jamet",
     "private": true,
-    "version": "0.5.0",
+    "version": "0.6.0",
     "type": "module",
     "scripts": {
         "dev": "concurrently -n 'TS,JS' -c 'blue,yellow' -p [{name}] 'tsc --watch' 'nodemon --quiet ./dist/index.js'",
@@ -20,7 +20,8 @@
         "jiti": "^2.4.2",
         "jsonwebtoken": "^9.0.2",
         "lodash.omit": "^4.5.0",
-        "mongoose": "^8.14.3"
+        "mongoose": "^8.14.3",
+        "multer": "^2.0.2"
     },
     "devDependencies": {
         "@types/bcrypt": "^6.0.0",
@@ -29,6 +30,7 @@
         "@types/express": "^5.0.1",
         "@types/jsonwebtoken": "^9.0.10",
         "@types/lodash.omit": "^4.5.9",
+        "@types/multer": "^2.0.0",
         "@types/node": "^22.7.7",
         "concurrently": "^9.0.1",
         "eslint": "^9.27.0",

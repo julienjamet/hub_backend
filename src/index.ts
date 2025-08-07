@@ -32,7 +32,7 @@ const allowedOrigin: string[] = setCorsAllowedOrigin();
 
 const corsOptions: CorsOptions = {
     origin: allowedOrigin,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
     credentials: true,
     allowedHeaders: ['Authorization', 'Content-Type']
 };
